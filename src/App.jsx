@@ -8,7 +8,7 @@ function App() {
     const [personalInfo, setPersonalInfo] = useState(exampleData.personalDetails);
 
     const handlePersonalInfoChange = (e) => {
-        const { key } = e.target.dataset;
+        const key = e.target.dataset.key;
         setPersonalInfo({ ...personalInfo, [key]: e.target.value });
     }
 
