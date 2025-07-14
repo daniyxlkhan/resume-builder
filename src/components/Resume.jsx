@@ -1,10 +1,11 @@
 import '../styles/Resume.css';
 import PersonalDetailsResumeSection from "./PersonalDetailsResumeSection.jsx";
 
-function Resume({info}) {
+function Resume({info: {personalInfo, educationInfo}}) {
     return (
         <div className="resume">
-            <PersonalDetailsResumeSection personalInfo={info}/>
+            <PersonalDetailsResumeSection personalInfo={personalInfo} />
+
         </div>
     );
 }
