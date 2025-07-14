@@ -3,7 +3,7 @@ import {useState} from "react";
 import exampleData from "./example-data.js";
 
 import PersonalDetails from "./components/PersonalDetails.jsx";
-import PersonalDetailsResumeSection from "./components/PersonalDetailsResumeSection.jsx";
+import Resume from "./components/Resume.jsx";
 
 function App() {
     const [personalInfo, setPersonalInfo] = useState(exampleData.personalDetails);
@@ -24,8 +24,8 @@ function App() {
                     location={personalInfo.location}
                 />
 
-                <PersonalDetailsResumeSection
-                    personalInfo={personalInfo}
+                <Resume
+                    info={personalInfo}
                 />
             </div>
         </div>
