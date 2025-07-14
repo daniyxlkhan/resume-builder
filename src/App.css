@@ -1,0 +1,10 @@
+.app {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: minmax(0px, 400px) minmax(0px, 920px);
+}

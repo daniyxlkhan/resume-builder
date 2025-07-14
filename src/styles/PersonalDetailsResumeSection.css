@@ -1,0 +1,27 @@
+.personal-details-resume-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    background-color: #0d374e;
+    color: white;
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.name-and-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.full-name {
+    font-size: 2.4rem;
+    font-weight: bold;
+    padding-bottom: 0.8rem;
+}
+
+.contact-info {
+    display: flex;
+    gap: 2rem;
+}

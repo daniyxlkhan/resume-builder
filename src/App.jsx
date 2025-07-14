@@ -3,6 +3,7 @@ import {useState} from "react";
 import exampleData from "./example-data.js";
 
 import PersonalDetails from "./components/PersonalDetails.jsx";
+import PersonalDetailsResumeSection from "./components/PersonalDetailsResumeSection.jsx";
 
 function App() {
     const [personalInfo, setPersonalInfo] = useState(exampleData.personalDetails);
@@ -13,15 +14,21 @@ function App() {
     }
 
     return (
-        <>
-            <PersonalDetails
-                onChange={handlePersonalInfoChange}
-                fullName={personalInfo.fullName}
-                email={personalInfo.email}
-                phoneNumber={personalInfo.phoneNumber}
-                location={personalInfo.location}
-            />
-        </>
+        <div className="app">
+            <div className="main-container">
+                <PersonalDetails
+                    onChange={handlePersonalInfoChange}
+                    fullName={personalInfo.fullName}
+                    email={personalInfo.email}
+                    phoneNumber={personalInfo.phoneNumber}
+                    location={personalInfo.location}
+                />
+
+                <PersonalDetailsResumeSection
+                    personalInfo={personalInfo}
+                />
+            </div>
+        </div>
     )
 }
 
