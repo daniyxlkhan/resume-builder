@@ -8,12 +8,23 @@ const exampleData = {
         location: "New York"
     },
     sections: {
-        educations: [
+        education: [
             {
                 degree: "Bachelors of Science",
                 schoolName: "New York University",
                 location: "New York City, US",
-                startDate: "08/2020",
+                startDate: "08/2012",
+                endDate: "present",
+                id: uniqid()
+            }
+        ],
+        work: [
+            {
+                companyName: "Nelson & Murdock Attorneys at Law",
+                positionTitle: "Punisher",
+                location: "Hell's Kitchen, NYC",
+                jobDescription: "One batch, two batch penny and dime",
+                startDate: "02/2018",
                 endDate: "present",
                 id: uniqid()
             }

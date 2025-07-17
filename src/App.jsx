@@ -4,12 +4,14 @@ import exampleData from "./example-data.js";
 
 import PersonalDetails from "./components/PersonalDetails.jsx";
 import EducationExperience from "./components/EducationExperience.jsx";
+import WorkExperience from "./components/WorkExperience.jsx";
 import Resume from "./components/Resume.jsx";
 
 
 function App() {
     const [personalInfo, setPersonalInfo] = useState(exampleData.personalDetails);
-    const [educationInfo, setEducationInfo] = useState(exampleData.sections.educations[0]);
+    const [educationInfo, setEducationInfo] = useState(exampleData.sections.education[0]);
+    const [workExperience, setWorkExperience] = useState(exampleData.sections.work[0]);
 
     const handlePersonalInfoChange = (e) => {
         const key = e.target.dataset.key;
@@ -21,9 +23,15 @@ function App() {
         setEducationInfo({ ...educationInfo, [key]: e.target.value });
     }
 
+    const handleWorkExperienceChange = (e) => {
+        const key = e.target.dataset.key;
+        setWorkExperience({ ...workExperience, [key]: e.target.value });
+    }
+
     const resumeDate = {
         personalInfo,
         educationInfo,
+        workExperience,
     };
 
     return (
@@ -45,6 +53,17 @@ function App() {
                     startDate={educationInfo.startDate}
                     endDate={educationInfo.endDate}
                     id={educationInfo.id}
+                />
+
+                <WorkExperience
+                    onChange={handleWorkExperienceChange}
+                    companyName={workExperience.companyName}
+                    positionTitle={workExperience.positionTitle}
+                    location={workExperience.location}
+                    jobDescription={workExperience.jobDescription}
+                    startDate={workExperience.startDate}
+                    endDate={workExperience.endDate}
+                    id={workExperience.id}
                 />
 
                 <Resume
