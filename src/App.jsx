@@ -17,7 +17,7 @@ function App() {
     }
 
     const handleEducationExperienceChange = (e) => {
-        const key = e.dataset.key;
+        const key = e.target.dataset.key;
         setEducationInfo({ ...educationInfo, [key]: e.target.value });
     }
 
