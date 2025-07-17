@@ -12,7 +12,7 @@ function EducationExperienceResumeSection({educationInfo: {degree, schoolName, l
 
             <div className="degree-and-location">
                 <span className="degree">{degree}</span>
-                <span className="location">{location}</span>
+                <span className="location"><i>{location}</i></span>
             </div>
         </div>
     );
