@@ -15,6 +15,7 @@ const exampleData = {
                 location: "West Point, US",
                 startDate: "1998",
                 endDate: "2001",
+                description: "GPA: 3.8 — Dean’s List all semesters. ",
                 id: uniqid()
             }
         ],

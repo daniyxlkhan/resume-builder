@@ -1,7 +1,7 @@
 import '../styles/EducationExperience.css';
 import InputGroup from "./InputGroup.jsx";
 
-function EducationExperience({onChange, degree, schoolName, location, startDate, endDate, id}) {
+function EducationExperience({onChange, degree, schoolName, location, startDate, endDate, description, id}) {
 
     return (
         <div className="education-experience">
@@ -50,6 +50,15 @@ function EducationExperience({onChange, degree, schoolName, location, startDate,
                 value={endDate}
                 onChange={onChange}
                 dataKey="endDate"
+            />
+            <InputGroup
+                type="textarea"
+                id="Description"
+                labelText="Description"
+                placeHolder="Description"
+                value={description}
+                onChange={onChange}
+                dataKey="description"
             />
         </div>
     );

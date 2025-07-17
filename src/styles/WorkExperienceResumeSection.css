@@ -13,11 +13,13 @@
 .position-and-location {
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-bottom: 0.8rem;
 }
 
 .job-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 360;
     margin-bottom: 1rem;
+    white-space: pre-wrap;
 }
