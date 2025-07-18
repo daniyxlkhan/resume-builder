@@ -33,7 +33,7 @@ const exampleData = {
             },
             {
                 companyName: "Private Security Consultant – Freelance",
-                positionTitle: "Captain",
+                positionTitle: "Consultant",
                 location: "New York City, US",
                 jobDescription: "Contracted by federal agencies and private clients for high-threat protection ops. " +
                     "Provided tactical training to elite security teams. " +

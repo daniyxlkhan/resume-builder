@@ -15,7 +15,7 @@ function PersonalDetailsResumeSection({ personalInfo: { fullName, email, phoneNu
                         <FontAwesomeIcon icon={faPhone} /> {phoneNumber}
                     </span>
                     <span className="location">
-                        <FontAwesomeIcon icon={faMapMarkerAlt} />{location}
+                        <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
                     </span>
                 </div>
             </div>
