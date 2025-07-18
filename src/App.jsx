@@ -16,6 +16,7 @@ function App() {
     const [workExperience, setWorkExperience] = useState(exampleData.sections.work);
     const [selectedEducationIndex, setSelectedEducationIndex] = useState(0);
     const [selectedWorkIndex, setSelectedWorkIndex] = useState(0);
+    const [expandedSection, setExpandedSection] = useState('education'); // 'education', 'work', or null
 
     const handlePersonalInfoChange = (e) => {
         const key = e.target.dataset.key;
@@ -84,6 +85,10 @@ function App() {
         setSelectedWorkIndex(Math.min(selectedWorkIndex, updatedWork.length - 1));
     }
 
+    const toggleSection = (section) => {
+        setExpandedSection(expandedSection === section ? null : section);
+    }
+
     const resumeData = {
         personalInfo,
         educationInfo,
@@ -93,72 +98,100 @@ function App() {
     return (
         <div className="app">
             <div className="main-container">
-                <PersonalDetails
-                    onChange={handlePersonalInfoChange}
-                    fullName={personalInfo.fullName}
-                    email={personalInfo.email}
-                    phoneNumber={personalInfo.phoneNumber}
-                    location={personalInfo.location}
-                />
-
-                <div className="education-section">
-                    <div className="section-header">
-                        <h2>Education</h2>
-                        <button onClick={addEducationEntry} className="add-button">Add Education</button>
-                    </div>
-
-                    <EntrySelector
-                        entries={educationInfo}
-                        addEntry={addEducationEntry}
-                        selectedIndex={selectedEducationIndex}
-                        setSelectedIndex={setSelectedEducationIndex}
-                        deleteEntry={deleteEducationEntry}
-                        selectLabelText="Select Education Entry"
-                        displayField="schoolName"
+                <div className="left-column">
+                    <PersonalDetails
+                        onChange={handlePersonalInfoChange}
+                        fullName={personalInfo.fullName}
+                        email={personalInfo.email}
+                        phoneNumber={personalInfo.phoneNumber}
+                        location={personalInfo.location}
                     />
 
-                    {educationInfo.length > 0 && (
-                        <EducationExperience
-                            onChange={handleEducationExperienceChange}
-                            degree={educationInfo[selectedEducationIndex].degree}
-                            schoolName={educationInfo[selectedEducationIndex].schoolName}
-                            location={educationInfo[selectedEducationIndex].location}
-                            startDate={educationInfo[selectedEducationIndex].startDate}
-                            endDate={educationInfo[selectedEducationIndex].endDate}
-                            description={educationInfo[selectedEducationIndex].description}
-                            id={educationInfo[selectedEducationIndex].id}
-                        />
-                    )}
-                </div>
+                    <div className="expandable-sections">
+                        <div className={`education-section ${expandedSection === 'education' ? 'expanded' : ''}`}>
+                            <div className="section-header" onClick={() => toggleSection('education')}>
+                                <div className="section-title">
+                                    <span className={`arrow ${expandedSection === 'education' ? 'expanded' : ''}`}>▶</span>
+                                    <h2>Education</h2>
+                                </div>
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); addEducationEntry(); }} 
+                                    className="add-button"
+                                >
+                                    Add Education
+                                </button>
+                            </div>
 
-                <div className="work-section">
-                    <div className="section-header">
-                        <h2>Work Experience</h2>
-                        <button onClick={addWorkEntry} className="add-button">Add Work</button>
+                            {expandedSection === 'education' && (
+                                <div className="section-content">
+                                    <EntrySelector
+                                        entries={educationInfo}
+                                        addEntry={addEducationEntry}
+                                        selectedIndex={selectedEducationIndex}
+                                        setSelectedIndex={setSelectedEducationIndex}
+                                        deleteEntry={deleteEducationEntry}
+                                        selectLabelText="Select Education Entry"
+                                        displayField="schoolName"
+                                    />
+
+                                    {educationInfo.length > 0 && (
+                                        <EducationExperience
+                                            onChange={handleEducationExperienceChange}
+                                            degree={educationInfo[selectedEducationIndex].degree}
+                                            schoolName={educationInfo[selectedEducationIndex].schoolName}
+                                            location={educationInfo[selectedEducationIndex].location}
+                                            startDate={educationInfo[selectedEducationIndex].startDate}
+                                            endDate={educationInfo[selectedEducationIndex].endDate}
+                                            description={educationInfo[selectedEducationIndex].description}
+                                            id={educationInfo[selectedEducationIndex].id}
+                                        />
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className={`work-section ${expandedSection === 'work' ? 'expanded' : ''}`}>
+                            <div className="section-header" onClick={() => toggleSection('work')}>
+                                <div className="section-title">
+                                    <span className={`arrow ${expandedSection === 'work' ? 'expanded' : ''}`}>▶</span>
+                                    <h2>Work Experience</h2>
+                                </div>
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); addWorkEntry(); }} 
+                                    className="add-button"
+                                >
+                                    Add Work
+                                </button>
+                            </div>
+
+                            {expandedSection === 'work' && (
+                                <div className="section-content">
+                                    <EntrySelector
+                                        entries={workExperience}
+                                        addEntry={addWorkEntry}
+                                        selectedIndex={selectedWorkIndex}
+                                        setSelectedIndex={setSelectedWorkIndex}
+                                        deleteEntry={deleteWorkEntry}
+                                        selectLabelText="Select Work Entry"
+                                        displayField="companyName"
+                                    />
+
+                                    {workExperience.length > 0 && (
+                                        <WorkExperience
+                                            onChange={handleWorkExperienceChange}
+                                            companyName={workExperience[selectedWorkIndex].companyName}
+                                            positionTitle={workExperience[selectedWorkIndex].positionTitle}
+                                            location={workExperience[selectedWorkIndex].location}
+                                            jobDescription={workExperience[selectedWorkIndex].jobDescription}
+                                            startDate={workExperience[selectedWorkIndex].startDate}
+                                            endDate={workExperience[selectedWorkIndex].endDate}
+                                            id={workExperience[selectedWorkIndex].id}
+                                        />
+                                    )}
+                                </div>
+                            )}
+                        </div>
                     </div>
-
-                    <EntrySelector
-                        entries={workExperience}
-                        addEntry={addWorkEntry}
-                        selectedIndex={selectedWorkIndex}
-                        setSelectedIndex={setSelectedWorkIndex}
-                        deleteEntry={deleteWorkEntry}
-                        selectLabelText="Select Work Entry"
-                        displayField="companyName"
-                    />
-
-                    {workExperience.length > 0 && (
-                        <WorkExperience
-                            onChange={handleWorkExperienceChange}
-                            companyName={workExperience[selectedWorkIndex].companyName}
-                            positionTitle={workExperience[selectedWorkIndex].positionTitle}
-                            location={workExperience[selectedWorkIndex].location}
-                            jobDescription={workExperience[selectedWorkIndex].jobDescription}
-                            startDate={workExperience[selectedWorkIndex].startDate}
-                            endDate={workExperience[selectedWorkIndex].endDate}
-                            id={workExperience[selectedWorkIndex].id}
-                        />
-                    )}
                 </div>
 
                 <Resume
