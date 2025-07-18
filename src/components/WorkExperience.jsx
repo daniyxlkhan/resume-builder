@@ -4,7 +4,6 @@ import InputGroup from "./InputGroup.jsx";
 function WorkExperience({onChange, companyName, positionTitle, location, jobDescription, startDate, endDate, id}) {
     return (
         <div className="work-experience">
-            <h1>Experience</h1>
             <InputGroup
                 type="text"
                 id="company-name"

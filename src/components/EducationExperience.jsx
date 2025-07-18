@@ -5,7 +5,6 @@ function EducationExperience({onChange, degree, schoolName, location, startDate,
 
     return (
         <div className="education-experience">
-            <h1>Education</h1>
             <InputGroup
                 type="text"
                 id="degree"
