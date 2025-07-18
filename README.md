@@ -6,7 +6,7 @@ A modern, interactive resume builder built with React that allows users to creat
 
 ## Live Demo
 
-**[Try it live here!](https://resume-builder-mocha-two.vercel.app/){:target="_blank"}**
+**[Try it live here!](https://resume-builder-mocha-two.vercel.app/)**
 
 ## Features
 
