@@ -9,15 +9,23 @@ function Resume({info: {personalInfo, educationInfo, workExperience}}) {
         <div className="resume">
             <PersonalDetailsResumeSection personalInfo={personalInfo} />
 
-            {educationInfo ? (
-            <div className="education-experience-header">Education</div>
-            ) : null}
-            <EducationExperienceResumeSection educationInfo={educationInfo} />
+            {educationInfo && educationInfo.length > 0 && (
+                <>
+                    <div className="education-experience-header">Education</div>
+                    {educationInfo.map((edu) => (
+                        <EducationExperienceResumeSection key={edu.id} educationInfo={edu} />
+                    ))}
+                </>
+            )}
 
-            {workExperience ? (
-            <div className="work-experience-header">Work Experience</div>
-            ) : null}
-            <WorkExperienceResumeSection workExperience={workExperience} />
+            {workExperience && workExperience.length > 0 && (
+                <>
+                    <div className="work-experience-header">Work Experience</div>
+                    {workExperience.map((work) => (
+                        <WorkExperienceResumeSection key={work.id} workExperience={work} />
+                    ))}
+                </>
+            )}
         </div>
     );
 }

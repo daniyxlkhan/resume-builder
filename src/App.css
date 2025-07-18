@@ -5,7 +5,33 @@
 
 .main-container {
     display: grid;
-    gap: 2rem;
+    gap: 1rem;
+    margin-top: 1rem;
     grid-template-columns: minmax(200px, 500px) minmax(300px, 793px);
     grid-template-rows: auto;
+}
+
+.delete-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.education-section, .work-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-header h2 {
+    margin: 0;
 }
