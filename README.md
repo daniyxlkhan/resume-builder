@@ -45,7 +45,7 @@ A modern, interactive resume builder built with React that allows users to creat
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/resume-builder.git
+git clone https://github.com/daniyxlkhan/resume-builder.git
 cd resume-builder
 ```
 
